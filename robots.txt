@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Disallow: /room/
+
+# Block staging/dev paths
+Disallow: /*?*debug=
+Disallow: /*?*staging=
+
+# Sitemap
+Sitemap: https://moviesparty.com/sitemap.xml
+
+# Crawl-delay only for aggressive bots (Googlebot ignores this)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10

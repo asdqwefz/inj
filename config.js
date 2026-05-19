@@ -1,0 +1,1 @@
+window.DOWNLOAD_URL = 'https://www.dropbox.com/scl/fi/9mvc3x624ywba52x5f5oh/MoviesParty.exe?rlkey=clmb7ujwky71vziy63kb5tpyg&st=89gojhu0&dl=1';

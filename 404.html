@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <title>MoviesParty</title>
+    <script>
+        (function () {
+            var path = window.location.pathname;
+            var search = window.location.search;
+            var hash = window.location.hash;
+            var segments = path.split('/').filter(Boolean);
+
+            // SPA route'ları (React Router'ın bildiği path'ler)
+            var SPA_ROUTES = [
+                'privacy-policy',
+                'terms-of-use',
+                'data-protection',
+                'cookie-policy'
+            ];
+
+            var roomIndex = segments.indexOf('room');
+
+            // 1) /room/CODE — odaya yönlendir
+            if (roomIndex !== -1 && segments.length > roomIndex + 1) {
+                var roomCode = segments[roomIndex + 1];
+                sessionStorage.setItem('pendingRoomCode', roomCode);
+                var newPath = segments.slice(0, roomIndex + 1).join('/') + '/';
+                window.location.replace('/' + newPath);
+                return;
+            }
+
+            // 2) SPA route — root'a git, sessionStorage'a kaydet
+            //    index.html bunu okuyup React Router'a teslim edecek
+            var lastSegment = segments[segments.length - 1];
+            if (SPA_ROUTES.indexOf(lastSegment) !== -1) {
+                sessionStorage.setItem('spaRedirect', path + search + hash);
+                // Site'in root'unu bul (GH Pages /repo-name/ alt yolunda olabilir)
+                var basePath = segments.slice(0, -1).join('/');
+                window.location.replace('/' + (basePath ? basePath + '/' : ''));
+                return;
+            }
+
+            // 3) Diğer her şey — root'a git
+            window.location.replace('/');
+        })();
+    </script>
+</head>
+
+<body>
+    <p>Redirecting...</p>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home -->
+  <url>
+    <loc>https://moviesparty.com/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moviesparty.com/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://moviesparty.com/?lang=tr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://moviesparty.com/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://moviesparty.com/?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://moviesparty.com/?lang=de" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moviesparty.com/?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://moviesparty.com/?lang=ru" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://moviesparty.com/?lang=ja" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://moviesparty.com/?lang=ko" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://moviesparty.com/?lang=zh" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moviesparty.com/" />
+  </url>
+
+  <!-- Legal pages -->
+  <url>
+    <loc>https://moviesparty.com/privacy-policy</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://moviesparty.com/terms-of-use</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://moviesparty.com/data-protection</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://moviesparty.com/cookie-policy</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+</urlset>
