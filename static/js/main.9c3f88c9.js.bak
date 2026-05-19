@@ -35183,7 +35183,6 @@
           </div>
           <div id="rc-body">
             
-            <!-- REJOIN -->
             <div id="rc-rejoin" class="rc-opt">
                <div class="rc-opt-row">
                  <div class="rc-icon">
@@ -35196,7 +35195,6 @@
                </div>
             </div>
 
-            <!-- CREATE -->
             <div id="rc-create-opt" class="rc-opt">
                <div class="rc-opt-row">
                  <div class="rc-icon">
@@ -35209,7 +35207,6 @@
                </div>
             </div>
 
-            <!-- JOIN -->
             <div id="rc-join-opt" class="rc-opt">
                <div class="rc-opt-row">
                  <div class="rc-icon">

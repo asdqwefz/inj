@@ -1,0 +1,36 @@
+{
+  "short_name": "MoviesParty",
+  "name": "MoviesParty - Watch Together with Friends",
+  "description": "Watch movies, TV shows and YouTube together with friends in real time. Sync playback, voice & video chat, private watch rooms.",
+  "lang": "en",
+  "categories": ["entertainment", "social", "video"],
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#DC2626",
+  "background_color": "#050505"
+}

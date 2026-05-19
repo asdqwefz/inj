@@ -9,7 +9,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#050505" />
 
-  <!-- Primary SEO -->
   <title>MoviesParty — Watch Movies & Shows Together Online | Voice Chat, Sync Playback</title>
   <meta name="description"
     content="MoviesParty lets you watch movies, TV shows and YouTube together with friends in real time. Sync playback, voice & video chat, private watch rooms. Netflix, Disney+, HBO Max and more. Free." />
@@ -20,7 +19,6 @@
   <meta name="googlebot" content="index, follow" />
   <link rel="canonical" href="https://moviesparty.com/" />
 
-  <!-- hreflang for 10 languages -->
   <link rel="alternate" hreflang="en" href="https://moviesparty.com/" />
   <link rel="alternate" hreflang="tr" href="https://moviesparty.com/?lang=tr" />
   <link rel="alternate" hreflang="es" href="https://moviesparty.com/?lang=es" />
@@ -33,7 +31,6 @@
   <link rel="alternate" hreflang="zh" href="https://moviesparty.com/?lang=zh" />
   <link rel="alternate" hreflang="x-default" href="https://moviesparty.com/" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="MoviesParty" />
   <meta property="og:title" content="MoviesParty — Watch Movies & Shows Together Online" />
@@ -55,7 +52,6 @@
   <meta property="og:locale:alternate" content="ko_KR" />
   <meta property="og:locale:alternate" content="zh_CN" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="MoviesParty — Watch Movies & Shows Together Online" />
   <meta name="twitter:description"
@@ -63,7 +59,6 @@
   <meta name="twitter:image" content="https://moviesparty.com/apple-touch-icon.png" />
   <meta name="twitter:image:alt" content="MoviesParty logo" />
 
-  <!-- JSON-LD: SoftwareApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -125,7 +120,6 @@
   }
   </script>
 
-  <!-- JSON-LD: FAQ (mirrors visible FAQ section, required by Google guidelines) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -175,7 +169,6 @@
   }
   </script>
 
-  <!-- JSON-LD: BreadcrumbList for home -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -195,7 +188,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
   <link rel="preconnect" href="https://image.tmdb.org/" crossorigin />
   <link rel="dns-prefetch" href="https://image.tmdb.org/" />
-  <!-- Preload critical font CSS to speed up LCP -->
   <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Syne:wght@600;700;800&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Syne:wght@600;700;800&display=swap"
@@ -203,20 +195,18 @@
   <link rel="manifest" href="./manifest.json" />
   <script>window.addEventListener("error", function (e) { e.error instanceof DOMException && "DataCloneError" === e.error.name && e.message && e.message.includes("PerformanceServerTiming") && (e.stopImmediatePropagation(), e.preventDefault()) }, !0)</script>
   <script>
-    // 404.html'in sessionStorage'a kaydettiği SPA path'ini geri yükle
-    (function () {
-      var redirect = sessionStorage.getItem('spaRedirect');
-      if (redirect) {
-        sessionStorage.removeItem('spaRedirect');
-        if (redirect !== window.location.pathname + window.location.search + window.location.hash) {
-          history.replaceState(null, '', redirect);
+      (function () {
+        var redirect = sessionStorage.getItem('spaRedirect');
+        if (redirect) {
+          sessionStorage.removeItem('spaRedirect');
+          if (redirect !== window.location.pathname + window.location.search + window.location.hash) {
+            history.replaceState(null, '', redirect);
+          }
         }
-      }
-    })();
+      })();
   </script>
   <script src="./config.js"></script>
   <style>
-    /* Basic resets */
     * {
       box-sizing: border-box;
     }
@@ -227,7 +217,6 @@
       overflow-x: hidden !important;
     }
 
-    /* Fix root container */
     #root {
       position: relative !important;
       z-index: 1 !important;
@@ -237,7 +226,6 @@
       margin-top: 0 !important;
     }
 
-    /* Header/nav spacing */
     header,
     nav,
     [role="banner"] {
@@ -250,31 +238,26 @@
 
 
 
-    /* Hide statistics cards */
     .bg-zinc-800\/50.border.border-zinc-700\/50.rounded-2xl.p-6.text-center,
     [class*="bg-zinc-800"][class*="border-zinc-700"][class*="rounded-2xl"][class*="text-center"] {
       display: none !important;
     }
 
-    /* Reduce spacing after statistics section */
     section:has([class*="bg-zinc-800"][class*="border-zinc-700"]) {
       margin-bottom: 0 !important;
       padding-bottom: 0 !important;
     }
 
-    /* Reduce top margin/padding of Features section */
     section:has([class*="Features"]),
     section>div:has([class*="Features"]) {
       margin-top: 2rem !important;
       padding-top: 2rem !important;
     }
 
-    /* Reduce spacing between catalog and features */
     #root>section {
       margin-bottom: 2rem !important;
     }
 
-    /* House of the Dragon image - scale up to remove white borders */
     img[src*="yrutngkn_image.png"],
     img[src*="House of the Dragon"],
     img[alt*="House of the Dragon"] {
@@ -282,13 +265,11 @@
       object-fit: cover !important;
     }
 
-    /* Apply scale to all catalog images */
     .aspect-\[2\/3\] img {
       transform: scale(1.1) !important;
       object-fit: cover !important;
     }
 
-    /* Film card hover zoom effect */
     .aspect-\[2\/3\] {
       overflow: hidden !important;
       transition: transform 0.3s ease !important;
@@ -343,7 +324,8 @@
 <body>
   <noscript>
     <h1>MoviesParty — Watch Movies &amp; Shows Together Online</h1>
-    <p>MoviesParty lets you watch movies, TV shows, anime and YouTube videos with friends at the same time. A free platform offering synchronized playback, voice &amp; video chat, and private watch rooms.</p>
+    <p>MoviesParty lets you watch movies, TV shows, anime and YouTube videos with friends at the same time. A free
+      platform offering synchronized playback, voice &amp; video chat, and private watch rooms.</p>
     <h2>Features</h2>
     <ul>
       <li>Synchronized video playback — everyone watches in sync, second by second</li>
@@ -354,12 +336,12 @@
       <li>10 languages: English, Turkish, Spanish, Portuguese, German, French, Russian, Japanese, Korean, Chinese</li>
       <li>Completely free, no registration required</li>
     </ul>
-    <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/data-protection">Data Protection</a> | <a href="/cookie-policy">Cookie Policy</a></p>
+    <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-use">Terms of Use</a> | <a
+        href="/data-protection">Data Protection</a> | <a href="/cookie-policy">Cookie Policy</a></p>
     <p>You need to enable JavaScript to run this app.</p>
   </noscript>
   <div id="root"></div>
 
-  <!-- Count-up Animation for Stats Section -->
   <script>
     (function () {
       'use strict';
@@ -480,45 +462,44 @@
     })();
   </script>
 
-  <!-- Download Modal -->
   <script>
-    window.showDownloadModal = function(title, desc, btnText, closeText) {
+    window.showDownloadModal = function (title, desc, btnText, closeText) {
       var m = document.getElementById('myAnimatedModal');
-      if(!m) {
+      if (!m) {
         var s = document.createElement('style');
         s.innerHTML = '@keyframes mFadeIn { from { opacity: 0; } to { opacity: 1; } } @keyframes mFadeOut { from { opacity: 1; } to { opacity: 0; } } @keyframes mPopUp { 0% { transform: scale(0.85) translateY(30px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } } @keyframes mPopDown { 0% { transform: scale(1) translateY(0); opacity: 1; } 100% { transform: scale(0.85) translateY(30px); opacity: 0; } } .modal-overlay { position: fixed; inset: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); backdrop-filter: blur(10px); z-index: 999999; display: flex; align-items: center; justify-content: center; animation: mFadeIn 0.3s ease-out forwards; } .modal-content { background: linear-gradient(145deg, #13131a 0%, #0a0a0d 100%); border: 1px solid rgba(255,255,255,0.08); border-radius: 28px; padding: 40px 30px; width: 90%; max-width: 420px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05); animation: mPopUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; } .modal-icon-bg { width: 72px; height: 72px; background: linear-gradient(135deg, rgba(232,25,44,0.2) 0%, rgba(232,25,44,0.05) 100%); border: 1px solid rgba(232,25,44,0.2); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; box-shadow: 0 0 30px rgba(232,25,44,0.15); } .modal-btn { background: linear-gradient(135deg, #e8192c 0%, #b31020 100%); color: #fff; border: none; padding: 16px 24px; border-radius: 16px; font-size: 16px; font-weight: 700; cursor: pointer; width: 100%; margin-bottom: 12px; transition: all 0.2s ease; box-shadow: 0 8px 20px rgba(232,25,44,0.3); display: flex; align-items: center; justify-content: center; gap: 8px; } .modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(232,25,44,0.4); background: linear-gradient(135deg, #f01a2e 0%, #c41223 100%); } .modal-close { background: transparent; color: #888; border: none; padding: 12px; font-size: 14px; font-weight: 600; cursor: pointer; width: 100%; transition: color 0.2s; border-radius: 12px; } .modal-close:hover { color: #fff; background: rgba(255,255,255,0.05); }';
         document.head.appendChild(s);
-        
+
         m = document.createElement('div');
         m.id = 'myAnimatedModal';
         m.className = 'modal-overlay';
         m.innerHTML = '<div class="modal-content"><div class="modal-icon-bg"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e8192c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></div><h3 style="color:#fff;font-size:26px;margin:0 0 12px;font-weight:800;letter-spacing:-0.5px;font-family:Inter,sans-serif;"></h3><p style="color:#a1a1aa;font-size:15px;line-height:1.6;margin:0 0 32px;font-family:Inter,sans-serif;"></p><button class="modal-btn"></button><button class="modal-close"></button></div>';
         document.body.appendChild(m);
-        
-        var closeM = function() {
+
+        var closeM = function () {
           m.style.animation = 'mFadeOut 0.3s ease-in forwards';
           m.querySelector('.modal-content').style.animation = 'mPopDown 0.3s ease-in forwards';
-          setTimeout(function() { m.style.display = 'none'; }, 300);
+          setTimeout(function () { m.style.display = 'none'; }, 300);
         };
-        
-        m.querySelector('.modal-btn').onclick = function() {
+
+        m.querySelector('.modal-btn').onclick = function () {
           window.location.href = window.DOWNLOAD_URL;
           closeM();
         };
-        
+
         m.querySelector('.modal-close').onclick = closeM;
-        m.onclick = function(e) { if (e.target === m) closeM(); };
-        window.addEventListener('keydown', function(e) {
+        m.onclick = function (e) { if (e.target === m) closeM(); };
+        window.addEventListener('keydown', function (e) {
           if (e.key === 'Escape' && m.style.display === 'flex') closeM();
         });
       }
-      
+
       m.querySelector('h3').innerText = title;
       m.querySelector('p').innerText = desc;
       m.querySelector('.modal-btn').innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>' + btnText;
       m.querySelector('.modal-close').innerText = closeText;
       m.style.display = 'flex';
-      
+
       // Reset animations
       m.style.animation = 'none'; m.offsetHeight; m.style.animation = null;
       m.querySelector('.modal-content').style.animation = 'none'; m.querySelector('.modal-content').offsetHeight; m.querySelector('.modal-content').style.animation = null;

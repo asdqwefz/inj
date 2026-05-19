@@ -1176,7 +1176,6 @@ function loadRoomInterface(roomCode) {
                 height: 100vh;
             }
 
-            /* ── NOISE TEXTURE OVERLAY ── */
             body::before {
                 content: '';
                 position: fixed; inset: 0;
@@ -1186,7 +1185,6 @@ function loadRoomInterface(roomCode) {
                 z-index: 9999;
             }
 
-            /* ── LAYOUT ── */
             .shell {
                 display: grid;
                 grid-template-columns: 56px 1fr 320px;
@@ -1195,7 +1193,6 @@ function loadRoomInterface(roomCode) {
                 width: 100vw;
             }
 
-            /* ── LEFT RAIL ── */
             .rail {
                 grid-row: 1 / 4;
                 background: var(--surface);
@@ -1235,7 +1232,6 @@ function loadRoomInterface(roomCode) {
             }
             .rail-spacer { flex: 1; }
 
-            /* ── TOP BAR ── */
             .topbar {
                 grid-column: 2 / 4;
                 background: var(--surface);
@@ -1333,7 +1329,6 @@ function loadRoomInterface(roomCode) {
             }
             .tbtn-accent:hover { background: #ff2236; box-shadow: 0 4px 16px rgba(232,25,44,0.45); }
 
-            /* ── TOP ACTION BUTTONS (Mic/Cam) ── */
             .top-action-btn {
                 width: 36px; height: 36px;
                 border-radius: 50%;
@@ -1371,7 +1366,6 @@ function loadRoomInterface(roomCode) {
             }
             .top-action-btn.off .btn-slash { display: block; }
 
-            /* ── LOCAL VIDEO PREVIEW (sağ üst, topbar köşesinde) ── */
             #localVideoContainer {
                 position: fixed;
                 top: 8px;
@@ -1470,7 +1464,6 @@ function loadRoomInterface(roomCode) {
                 opacity: 0.6;
             }
 
-            /* ── MAIN VIDEO AREA ── */
             .main {
                 grid-column: 2;
                 grid-row: 2;
@@ -1489,7 +1482,6 @@ function loadRoomInterface(roomCode) {
                 min-height: 0;
             }
 
-            /* subtle grid pattern on video bg */
             .video-stage::before {
                 content: '';
                 position: absolute; inset: 0;
@@ -1538,7 +1530,6 @@ function loadRoomInterface(roomCode) {
                 line-height: 1.5;
             }
 
-            /* ── PLATFORM STRIP ── */
             .platform-strip {
                 padding: 12px 20px 14px;
                 background: var(--surface);
@@ -1594,7 +1585,6 @@ function loadRoomInterface(roomCode) {
             }
             .strip-chip:hover span { color: var(--text); }
 
-            /* ── BOTTOM BAR (Central column) ── */
             .bottombar {
                 grid-column: 2;
                 grid-row: 3;
@@ -1640,7 +1630,6 @@ function loadRoomInterface(roomCode) {
 
             .bottombar-right { margin-left: auto; display: flex; gap: 10px; }
 
-            /* ── RIGHT SIDEBAR ── */
             .sidebar-right {
                 grid-column: 3;
                 grid-row: 2 / 4;
@@ -1701,7 +1690,6 @@ function loadRoomInterface(roomCode) {
             .empty-sidebar svg { opacity: 0.4; }
             .empty-sidebar p { font-size: 13px; color: var(--sub); }
 
-            /* ── PERSISTENT CHAT PANE ── */
             .chat-pane {
                 height: 380px;
                 border-top: 1px solid var(--border);
@@ -1765,7 +1753,6 @@ function loadRoomInterface(roomCode) {
             }
             .chat-send:hover { background: #ff2236; transform: scale(1.06); }
 
-            /* ── CHAT MESSAGES area (inside sidebar-right when chat tab active) ── */
             .chat-messages {
                 padding: 14px;
                 display: flex;
@@ -1789,7 +1776,6 @@ function loadRoomInterface(roomCode) {
             .msg-time { font-size: 10px; color: var(--muted); margin-left: auto; }
             .msg-text { font-size: 13px; color: #bbb; line-height: 1.5; padding-left: 26px; }
 
-            /* ── BOTTOM BAR ── */
             .bottombar {
                 grid-column: 2;
                 grid-row: 3;
@@ -1849,7 +1835,6 @@ function loadRoomInterface(roomCode) {
 
             .bottombar-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 
-            /* ── APP DOWNLOAD MODAL ── */
             .app-modal-overlay {
                 position: fixed; inset: 0;
                 background: rgba(0,0,0,0.82);
@@ -1881,7 +1866,6 @@ function loadRoomInterface(roomCode) {
             .app-modal-overlay.show .app-modal {
                 transform: translateY(0) scale(1);
             }
-            /* red glow strip at top */
             .app-modal::before {
                 content: '';
                 position: absolute; top: 0; left: 0; right: 0;
@@ -1947,7 +1931,6 @@ function loadRoomInterface(roomCode) {
                 color: var(--sub);
                 line-height: 1.5;
             }
-            /* platform logos row */
             .app-modal-platforms {
                 display: flex;
                 align-items: center;
@@ -1977,7 +1960,6 @@ function loadRoomInterface(roomCode) {
                 color: var(--sub);
                 font-weight: 600;
             }
-            /* feature list */
             .app-modal-features {
                 margin: 18px 28px 0;
                 background: rgba(255,255,255,0.03);
@@ -2004,7 +1986,6 @@ function loadRoomInterface(roomCode) {
             .feat-icon svg { color: var(--accent); }
             .feat-text { font-size: 12.5px; color: #bbb; line-height: 1.35; }
             .feat-text strong { color: var(--text); font-weight: 600; }
-            /* social proof */
             .app-modal-proof {
                 display: flex;
                 align-items: center;
@@ -2033,7 +2014,6 @@ function loadRoomInterface(roomCode) {
                 0%, 100% { opacity: 1; transform: scale(1); }
                 50% { opacity: 0.4; transform: scale(0.7); }
             }
-            /* download buttons */
             .app-modal-actions {
                 padding: 18px 28px 26px;
                 display: flex;
@@ -2160,7 +2140,6 @@ function loadRoomInterface(roomCode) {
         </style>
 
         <div class="shell">
-            <!-- ── LEFT RAIL ── -->
             <nav class="rail">
                 <svg class="rail-logo" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="40" height="40" rx="10" fill="#E8192C"/>
@@ -2184,7 +2163,6 @@ function loadRoomInterface(roomCode) {
                 </button>
             </nav>
 
-            <!-- ── TOP BAR ── -->
             <header class="topbar">
                 <span class="room-title">${userName}${T('room_suffix')}</span>
                 <div class="room-badge">
@@ -2216,7 +2194,6 @@ function loadRoomInterface(roomCode) {
                 </div>
             </header>
 
-            <!-- ── MAIN VIDEO ── -->
             <main class="main">
                 <div class="video-stage">
                     <div class="empty-stage">
@@ -2271,7 +2248,6 @@ function loadRoomInterface(roomCode) {
                 </div>
             </main>
 
-            <!-- ── RIGHT SIDEBAR (Tabs + Persistent Chat) ── -->
             <aside class="sidebar-right">
                 <div class="sidebar-top">
                     <div class="sidebar-tabs">
@@ -2301,7 +2277,6 @@ function loadRoomInterface(roomCode) {
                 </div>
             </aside>
 
-            <!-- ── BOTTOM BAR (Central) ── -->
             <footer class="bottombar">
                 <div class="user-chip">
                     <div class="user-avatar-ring">
@@ -2318,14 +2293,12 @@ function loadRoomInterface(roomCode) {
             </footer>
         </div>
 
-        <!-- ── LOCAL VIDEO PREVIEW ELEMENT ── -->
         <div id="localVideoContainer">
             <video id="localVideo" autoplay playsinline muted></video>
             <div class="preview-label">${T('preview_you')}</div>
             <div class="hover-hint" data-expand="${T('hint_expand')}" data-collapse="${T('hint_collapse')}"></div>
         </div>
 
-        <!-- ── MEMBERS MODAL ── -->
         <div class="app-modal-overlay" id="membersModal" onclick="if(event.target===this)closeMembersModal()">
             <div class="app-modal" style="max-width: 400px; padding: 24px;">
                 <button class="app-modal-close" onclick="closeMembersModal()">✕</button>
@@ -2347,7 +2320,6 @@ function loadRoomInterface(roomCode) {
             </div>
         </div>
 
-        <!-- ── SETTINGS MODAL ── -->
         <div class="app-modal-overlay" id="settingsModal" onclick="if(event.target===this)closeSettingsModal()">
             <div class="app-modal" style="max-width: 460px; padding: 28px;">
                 <button class="app-modal-close" onclick="closeSettingsModal()">✕</button>
@@ -2357,7 +2329,6 @@ function loadRoomInterface(roomCode) {
                 </div>
                 
                 <div class="settings-scroll" style="max-height: 480px; overflow-y: auto; padding-right: 10px; display: flex; flex-direction: column; gap: 28px;">
-                    <!-- Section: General -->
                     <div class="settings-section">
                         <div style="font-size: 10px; font-weight: 800; color: var(--accent); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px;">${T('section_general')}</div>
                         <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -2384,7 +2355,6 @@ function loadRoomInterface(roomCode) {
                         </div>
                     </div>
 
-                    <!-- Section: Permissions (NEW) -->
                     <div class="settings-section">
                         <div style="font-size: 10px; font-weight: 800; color: var(--accent); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px;">${T('section_permissions')}</div>
                         <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -2421,7 +2391,6 @@ function loadRoomInterface(roomCode) {
                         </div>
                     </div>
 
-                    <!-- Section: Sync & Video -->
                     <div class="settings-section">
                         <div style="font-size: 10px; font-weight: 800; color: var(--accent); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px;">${T('section_sync_video')}</div>
                         <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -2447,7 +2416,6 @@ function loadRoomInterface(roomCode) {
                         </div>
                     </div>
 
-                    <!-- Section: Appearance -->
                     <div class="settings-section">
                         <div style="font-size: 10px; font-weight: 800; color: var(--accent); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px;">${T('section_appearance')}</div>
                         <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -2482,7 +2450,6 @@ function loadRoomInterface(roomCode) {
             </div>
         </div>
 
-        <!-- ── APP DOWNLOAD MODAL ── -->
         <div class="app-modal-overlay" id="appModal" onclick="if(event.target===this)closeAppModal()">
             <div class="app-modal">
                 <button class="app-modal-close" onclick="closeAppModal()">✕</button>
@@ -2748,7 +2715,7 @@ function loadRoomInterface(roomCode) {
             localVideoContainer.classList.toggle('expanded');
         });
     }
-    
+
     let localStream = null;
     let audioContext = null;
     let analyser = null;
@@ -2764,18 +2731,18 @@ function loadRoomInterface(roomCode) {
         try {
             const constraints = type === 'audio' ? { audio: true } : { video: true };
             const newStream = await navigator.mediaDevices.getUserMedia(constraints);
-            
+
             if (!localStream) {
                 localStream = newStream;
             } else {
                 newStream.getTracks().forEach(t => localStream.addTrack(t));
             }
-            
+
             if (type === 'video' && localVideo) {
                 localVideo.srcObject = localStream;
                 localVideoContainer.classList.add('show');
             }
-            
+
             if (type === 'audio') {
                 startMicMeter();
             }
@@ -2801,14 +2768,14 @@ function loadRoomInterface(roomCode) {
             microphone.connect(analyser);
 
             const volumes = new Uint8Array(analyser.frequencyBinCount);
-            
+
             function updateMeter() {
                 analyser.getByteFrequencyData(volumes);
                 let sum = 0;
                 for (let v of volumes) sum += v;
                 const average = sum / volumes.length;
-                const volume = Math.min(100, Math.pow(average / 128, 0.5) * 100); 
-                
+                const volume = Math.min(100, Math.pow(average / 128, 0.5) * 100);
+
                 if (micMeterBars) {
                     micMeterBars.forEach((bar, i) => {
                         // Create a more sophisticated waveform pattern
@@ -2816,14 +2783,14 @@ function loadRoomInterface(roomCode) {
                         const scale = waveScales[i] || 1;
                         const jitter = 0.8 + Math.random() * 0.4; // Add slight natural jitter
                         const h = Math.max(3, (volume / 100) * 20 * scale * jitter);
-                        
+
                         bar.style.height = h + 'px';
                         bar.style.opacity = volume > 5 ? 1 : 0.6;
                     });
                 }
                 animationId = requestAnimationFrame(updateMeter);
             }
-            
+
             updateMeter();
             if (micMeterTop) micMeterTop.style.display = 'flex';
         } catch (e) {
