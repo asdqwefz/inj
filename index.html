@@ -285,7 +285,6 @@
     }
   </style>
   <script>
-    // IMAGE LOADING OPTIMIZATION
     (function () {
       'use strict';
 
@@ -377,7 +376,6 @@
         requestAnimationFrame(step);
       }
 
-      // "4K" stepped animation: 1K → 2K → 3K → 4K with scale pop
       function animate4K(el) {
         var steps = ['1K', '2K', '3K', '4K'];
         var delay = 340;
@@ -403,20 +401,17 @@
 
         var raw = numberDiv.textContent.trim();
 
-        // "4K" — stepped K animation
         if (raw === '4K') {
           numberDiv.textContent = '1K';
           animate4K(numberDiv);
           return;
         }
 
-        // Numeric: "5,000+", "3,000+", "15+"
         var match = raw.match(/^([\d,]+)(\+?)$/);
         if (match) {
           var numStr = match[1].replace(/,/g, '');
           var target = parseInt(numStr, 10);
           var suffix = match[2] || '';
-          // Use longer duration for small numbers so the animation is clearly visible
           var duration = target < 100 ? 2000 : 2200;
           numberDiv.textContent = '0' + suffix;
           animateCountUp(numberDiv, target, suffix, duration);
@@ -431,7 +426,6 @@
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
               var idx = parseInt((entry.target.getAttribute('data-testid') || '').replace('stat-item-', ''), 10) || 0;
-              // Stagger each card slightly
               (function (el, delay) {
                 setTimeout(function () { initStatItem(el); }, delay);
               })(entry.target, idx * 120);
@@ -500,7 +494,6 @@
       m.querySelector('.modal-close').innerText = closeText;
       m.style.display = 'flex';
 
-      // Reset animations
       m.style.animation = 'none'; m.offsetHeight; m.style.animation = null;
       m.querySelector('.modal-content').style.animation = 'none'; m.querySelector('.modal-content').offsetHeight; m.querySelector('.modal-content').style.animation = null;
     };

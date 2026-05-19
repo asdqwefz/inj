@@ -1,8 +1,3 @@
-// ── GLOBAL SABİTLER ──────────────────────────────────────────────────────────
-// DOWNLOAD_URL artık üst dizindeki config.js dosyasından geliyor
-// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-// ── I18N (room sayfası için, ana sayfayla aynı i18nextLng key'i kullanır) ──
 (function () {
     const DICT = {
         tr: {
@@ -1017,7 +1012,6 @@
     window.roomT = t;
     window.roomLang = getLang;
 
-    // Statik HTML için data-i18n attribute'larını çevir (avatar seçim sayfası vb.)
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
         el.textContent = t(el.getAttribute("data-i18n"));
     });
@@ -1027,11 +1021,9 @@
     document.documentElement.lang = getLang();
 })();
 
-// Get room code from URL (check path first, then hash for SPA fallback)
 const pathParts = window.location.pathname.split('/').filter(p => p);
 let urlRoomCode = pathParts[pathParts.length - 1];
 
-// Handle hash-based routing (e.g., #room/CODE or #CODE)
 if (!urlRoomCode || urlRoomCode === 'room' || urlRoomCode === 'index.html') {
     const hash = window.location.hash;
     const urlParams = new URLSearchParams(window.location.search);
@@ -1039,43 +1031,32 @@ if (!urlRoomCode || urlRoomCode === 'room' || urlRoomCode === 'index.html') {
 
     if (hash.startsWith('#room/')) {
         urlRoomCode = hash.split('/')[1];
-    } else if (hash.length === 7) { // e.g., #K7M2N9
+    } else if (hash.length === 7) {
         urlRoomCode = hash.substring(1);
     } else if (queryCode) {
         urlRoomCode = queryCode;
     }
 }
 
-// Check if we're on a specific room page (has code) or room selection page (no code)
 const isRoomSelection = !urlRoomCode || urlRoomCode === 'room' || urlRoomCode === 'create' || urlRoomCode === 'index.html';
-
-// Check if user already has session data
 const hasUserSession = sessionStorage.getItem('userName') && sessionStorage.getItem('userAvatar');
 
 if (!isRoomSelection) {
-    // We're on a specific room page - show the room interface
     if (hasUserSession) {
-        // User has session, load room directly
         loadRoomInterface(urlRoomCode);
     } else {
-        // No session, show user selection first
-        // Store the room code to join after user selection
         sessionStorage.setItem('pendingRoomCode', urlRoomCode);
     }
 } else if (sessionStorage.getItem('roomCode')) {
-    // User has a room code - load room or prompt for session
     const savedRoomCode = sessionStorage.getItem('roomCode');
     if (hasUserSession) {
         window.history.replaceState({}, '', './' + savedRoomCode);
         loadRoomInterface(savedRoomCode);
     } else {
-        // We have a room code but no user session - set it as pending
         sessionStorage.setItem('pendingRoomCode', savedRoomCode);
-        // Page logic will naturally show the user selection modal
     }
 }
 
-// Avatar selection
 let selectedAvatar = 'Felix';
 
 document.querySelectorAll('.avatar')?.forEach(avatar => {
@@ -1102,44 +1083,32 @@ function enterRoom() {
         return;
     }
 
-    // Store user info
     sessionStorage.setItem('userAvatar', selectedAvatar);
     sessionStorage.setItem('userName', displayName);
 
-    // Check if there's a pending room code (from URL) or an existing room code
     const pendingRoomCode = sessionStorage.getItem('pendingRoomCode');
     const existingRoomCode = sessionStorage.getItem('roomCode');
     let roomCode;
 
     if (pendingRoomCode) {
-        // Join existing room from URL
         roomCode = pendingRoomCode;
         sessionStorage.removeItem('pendingRoomCode');
     } else if (existingRoomCode) {
-        // Reuse the already-assigned room code
         roomCode = existingRoomCode;
     } else {
-        // Generate new 6-character room code (uppercase alphanumeric)
         roomCode = Math.random().toString(36).substring(2, 8).toUpperCase();
     }
 
-    // Store room code
     sessionStorage.setItem('roomCode', roomCode);
 
-    // Show loading screen
     const T = window.roomT || ((k) => k);
     document.getElementById('loadingSubtext').textContent = T('welcome_msg', { name: displayName });
     document.getElementById('loadingScreen').classList.add('show');
 
-    // After animation, load the room interface
     setTimeout(() => {
-        // Update URL
         window.history.pushState({}, '', './' + roomCode);
-
-        // Load room interface
         loadRoomInterface(roomCode);
 
-        // Hide loading screen
         document.getElementById('loadingScreen').classList.remove('show');
     }, 2000);
 }
@@ -2540,7 +2509,6 @@ function loadRoomInterface(roomCode) {
         </div>
     `;
 
-    // --- RAIL BUTTON LOGIC ---
     const railHome = document.getElementById('railHome');
     const railMembers = document.getElementById('railMembers');
     const railSettings = document.getElementById('railSettings');
@@ -2569,9 +2537,6 @@ function loadRoomInterface(roomCode) {
         document.getElementById('settingsModal').classList.remove('show');
     };
 
-    // --- INTERACTIVITY LOGIC ---
-
-    // 1. Tab Switching (Playlist / History only)
     const tabs = document.querySelectorAll('.stab');
     const sidebarContent = document.getElementById('sidebarContent');
 
@@ -2580,9 +2545,8 @@ function loadRoomInterface(roomCode) {
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
 
-            // Sync with rail highlight
             document.querySelectorAll('.rail-btn').forEach(b => b.classList.remove('active'));
-            railHome.classList.add('active'); // Keep "Home" active for sidebar content views
+            railHome.classList.add('active');
 
             const tabName = tab.dataset.tab || tab.textContent.trim();
             if (tabName === 'Playlist') {
@@ -2603,7 +2567,6 @@ function loadRoomInterface(roomCode) {
         });
     });
 
-    // 2. Chat Sending
     const chatInput = document.querySelector('.chat-input');
     const chatSend = document.querySelector('.chat-send');
     const chatMessages = document.getElementById('chatMessages');
@@ -2636,7 +2599,6 @@ function loadRoomInterface(roomCode) {
         if (e.key === 'Enter') sendChatMessage();
     });
 
-    // 3. Platform Click (Open Modal)
     document.querySelectorAll('.strip-chip').forEach(chip => {
         chip.addEventListener('click', () => {
             const platform = chip.dataset.platform || chip.querySelector('span').textContent;
@@ -2660,7 +2622,6 @@ function loadRoomInterface(roomCode) {
         modal?.classList.add('show');
     };
 
-    // 4. Search / YouTube Link Detection
     const searchInput = document.querySelector('.search-input');
     searchInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
@@ -2678,8 +2639,6 @@ function loadRoomInterface(roomCode) {
             }
         }
     });
-
-    // 4. Invite Link Feedback
 
     const inviteBtnBottom = document.getElementById('inviteBtnBottom');
     const inviteBtnTop = document.getElementById('inviteBtnTop');
@@ -2701,7 +2660,6 @@ function loadRoomInterface(roomCode) {
     handleInviteClick(inviteBtnBottom);
     handleInviteClick(inviteBtnTop);
 
-    // Mic & Cam Real Logic
     const micBtn = document.getElementById('micBtn');
     const camBtn = document.getElementById('camBtn');
     const localVideo = document.getElementById('localVideo');
@@ -2709,7 +2667,6 @@ function loadRoomInterface(roomCode) {
     const micMeterTop = document.getElementById('micMeterTop');
     const micMeterBars = document.querySelectorAll('.mic-meter-bar');
 
-    // Tıklayınca kamera preview'ını büyüt/küçült
     if (localVideoContainer) {
         localVideoContainer.addEventListener('click', () => {
             localVideoContainer.classList.toggle('expanded');
@@ -2757,7 +2714,7 @@ function loadRoomInterface(roomCode) {
 
     function startMicMeter() {
         if (!localStream || localStream.getAudioTracks().length === 0) return;
-        if (audioContext) return; // Already running
+        if (audioContext) return;
 
         try {
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -2778,10 +2735,9 @@ function loadRoomInterface(roomCode) {
 
                 if (micMeterBars) {
                     micMeterBars.forEach((bar, i) => {
-                        // Create a more sophisticated waveform pattern
                         const waveScales = [0.4, 0.7, 1.2, 1.5, 1.2, 0.7, 0.4];
                         const scale = waveScales[i] || 1;
-                        const jitter = 0.8 + Math.random() * 0.4; // Add slight natural jitter
+                        const jitter = 0.8 + Math.random() * 0.4;
                         const h = Math.max(3, (volume / 100) * 20 * scale * jitter);
 
                         bar.style.height = h + 'px';
@@ -2802,7 +2758,6 @@ function loadRoomInterface(roomCode) {
         micBtn.onclick = async () => {
             const currentlyOff = micBtn.classList.contains('off');
             if (currentlyOff) {
-                // Enabling
                 const success = await ensureTrack('audio');
                 if (success) {
                     localStream.getAudioTracks().forEach(t => t.enabled = true);
@@ -2812,7 +2767,6 @@ function loadRoomInterface(roomCode) {
                     chatMessages.insertAdjacentHTML('beforeend', `<div class="sys-msg">🎙️ Microphone unmuted</div>`);
                 }
             } else {
-                // Disabling
                 if (localStream) localStream.getAudioTracks().forEach(t => t.enabled = false);
                 micBtn.classList.add('off');
                 micBtn.classList.remove('active');
@@ -2827,7 +2781,6 @@ function loadRoomInterface(roomCode) {
         camBtn.onclick = async () => {
             const currentlyOff = camBtn.classList.contains('off');
             if (currentlyOff) {
-                // Enabling
                 const success = await ensureTrack('video');
                 if (success) {
                     localStream.getVideoTracks().forEach(t => t.enabled = true);
@@ -2837,7 +2790,6 @@ function loadRoomInterface(roomCode) {
                     chatMessages.insertAdjacentHTML('beforeend', `<div class="sys-msg">📷 Camera turned on</div>`);
                 }
             } else {
-                // Disabling
                 if (localStream) localStream.getVideoTracks().forEach(t => t.enabled = false);
                 camBtn.classList.add('off');
                 camBtn.classList.remove('active');
@@ -2848,7 +2800,6 @@ function loadRoomInterface(roomCode) {
         };
     }
 
-    // 5. Leave Room Logic
     const leaveBtn = document.querySelector('.rail-btn[title="Leave room"]');
     if (leaveBtn) {
         leaveBtn.onclick = () => {
@@ -2858,9 +2809,6 @@ function loadRoomInterface(roomCode) {
         };
     }
 
-    // 6. Top Bar Room Code Copy Logic
-    // Users can click the room badge in the top bar to copy the code.
-    // I'll add a click listener to the room code in the top bar for copying.
     const roomCodeEl = document.querySelector('.room-badge');
     if (roomCodeEl) {
         roomCodeEl.style.cursor = 'pointer';
@@ -2875,7 +2823,6 @@ function loadRoomInterface(roomCode) {
         });
     }
 
-    // Animated live viewer counter logic...
     (function startViewerCounter() {
         const el = document.getElementById('liveViewerCount');
         if (!el) return;
@@ -2913,7 +2860,6 @@ function loadRoomInterface(roomCode) {
         }, 3500);
     })();
 
-    // 7. Auto-detect Platform Rooms on Join
     const platformMapping = {
         'K7M2N9': 'Netflix',
         'R4T8V1': 'Disney+',
@@ -2929,7 +2875,6 @@ function loadRoomInterface(roomCode) {
             if (typeof window.showAppModal === 'function') {
                 window.showAppModal(platform);
             }
-            // Lock modal — bu kod ile gelenler kapatamasın
             const appModalEl = document.getElementById('appModal');
             if (appModalEl) {
                 appModalEl.removeAttribute('onclick');
@@ -2944,14 +2889,12 @@ function loadRoomInterface(roomCode) {
     }
 }
 
-// Close modal on outside click
 document.getElementById('errorModal')?.addEventListener('click', function (e) {
     if (e.target === this) {
         closeModal();
     }
 });
 
-// Close modal on ESC key
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         closeModal();

@@ -11,7 +11,6 @@
             var hash = window.location.hash;
             var segments = path.split('/').filter(Boolean);
 
-            // SPA route'ları (React Router'ın bildiği path'ler)
             var SPA_ROUTES = [
                 'privacy-policy',
                 'terms-of-use',
@@ -21,7 +20,6 @@
 
             var roomIndex = segments.indexOf('room');
 
-            // 1) /room/CODE — odaya yönlendir
             if (roomIndex !== -1 && segments.length > roomIndex + 1) {
                 var roomCode = segments[roomIndex + 1];
                 sessionStorage.setItem('pendingRoomCode', roomCode);
@@ -30,18 +28,14 @@
                 return;
             }
 
-            // 2) SPA route — root'a git, sessionStorage'a kaydet
-            //    index.html bunu okuyup React Router'a teslim edecek
             var lastSegment = segments[segments.length - 1];
             if (SPA_ROUTES.indexOf(lastSegment) !== -1) {
                 sessionStorage.setItem('spaRedirect', path + search + hash);
-                // Site'in root'unu bul (GH Pages /repo-name/ alt yolunda olabilir)
                 var basePath = segments.slice(0, -1).join('/');
                 window.location.replace('/' + (basePath ? basePath + '/' : ''));
                 return;
             }
 
-            // 3) Diğer her şey — root'a git
             window.location.replace('/');
         })();
     </script>
