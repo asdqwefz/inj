@@ -1021,6 +1021,16 @@
     document.documentElement.lang = getLang();
 })();
 
+const PLATFORM_LOCKED_ROOMS = {
+    'K7M2N9': 'Netflix',
+    'R4T8V1': 'Disney+',
+    'X3Y6Z2': 'Prime Video',
+    'A9B5C7': 'Hulu',
+    'D1E4F8': 'HBO Max',
+    'G2H6J3': 'Crunchyroll',
+    'L5P0Q9': 'Custom Video Link'
+};
+
 const pathParts = window.location.pathname.split('/').filter(p => p);
 let urlRoomCode = pathParts[pathParts.length - 1];
 
@@ -1041,7 +1051,16 @@ if (!urlRoomCode || urlRoomCode === 'room' || urlRoomCode === 'index.html') {
 const isRoomSelection = !urlRoomCode || urlRoomCode === 'room' || urlRoomCode === 'create' || urlRoomCode === 'index.html';
 const hasUserSession = sessionStorage.getItem('userName') && sessionStorage.getItem('userAvatar');
 
-if (!isRoomSelection) {
+const pendingCode = sessionStorage.getItem('pendingRoomCode');
+const lockedCode = (urlRoomCode && PLATFORM_LOCKED_ROOMS[urlRoomCode])
+    ? urlRoomCode
+    : (pendingCode && PLATFORM_LOCKED_ROOMS[pendingCode] ? pendingCode : null);
+
+if (lockedCode) {
+    sessionStorage.removeItem('pendingRoomCode');
+    window.history.replaceState({}, '', './' + lockedCode);
+    loadRoomInterface(lockedCode);
+} else if (!isRoomSelection) {
     if (hasUserSession) {
         loadRoomInterface(urlRoomCode);
     } else {
@@ -2860,18 +2879,9 @@ function loadRoomInterface(roomCode) {
         }, 3500);
     })();
 
-    const platformMapping = {
-        'K7M2N9': 'Netflix',
-        'R4T8V1': 'Disney+',
-        'X3Y6Z2': 'Prime Video',
-        'A9B5C7': 'Hulu',
-        'D1E4F8': 'HBO Max',
-        'G2H6J3': 'Crunchyroll',
-        'L5P0Q9': 'Custom Video Link'
-    };
-    if (platformMapping[roomCode]) {
+    if (PLATFORM_LOCKED_ROOMS[roomCode]) {
         setTimeout(() => {
-            const platform = platformMapping[roomCode];
+            const platform = PLATFORM_LOCKED_ROOMS[roomCode];
             if (typeof window.showAppModal === 'function') {
                 window.showAppModal(platform);
             }
